@@ -22,3 +22,9 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+### MY COMMENTS
+
+vue.config.js   => this file use for change port of execution 
+                => current port is '100'
