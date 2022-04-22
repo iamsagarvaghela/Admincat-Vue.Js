@@ -31,7 +31,7 @@
             <h5>{{ product_detail.stock }}</h5>
             <div class="row col-md-12 mt-5">
                 <div class="col-md-6 col-sm-6 col-xs-6 my-2">
-                    <button class="cart" @click="addCart(product_detail.id)"><i class="fa fa-shopping-cart"></i>&nbsp;ADD TO CART</button>
+                    <button class="cart" @click="addCart(product_detail.id, product_detail.price)"><i class="fa fa-shopping-cart"></i>&nbsp;ADD TO CART</button>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6 my-2">
                     <button class="buy"><i class="fa fa-bolt"></i>&nbsp;BUY NOW</button>
@@ -64,23 +64,15 @@ export default {
         }
     },
     methods: {
-        // async loadDetailProducts() {
-        //     this.$store.state.todaydeal.product_detail = []
-        //     this.$store.dispatch("loadDetailProducts", this.$route.params.pro_id)
-        // },
-        addCart(pro_id) {
+        addCart(pro_id, pro_price) {
             this.customer_id = JSON.parse(localStorage.getItem("user-info"))
             this.customer_id = this.customer_id.success.id
-            let cartData = {"customer_id" : this.customer_id, "product_id" : pro_id}
+            let cartData = {"customer_id" : this.customer_id, "product_id" : pro_id, "product_price" : pro_price}
             this.$store.dispatch("addtoCart", cartData)
             alert(this.product_detail.name + " Added to your Cart 🛒.")
-            // console.log("Customer_id:",this.customer_id.success.id,"Product_id:", pro_id)
         }
     },
     mounted() {
-        // this.loadDetailProducts()
-        // this.product_detail = JSON.parse(this.productData)
-        // let product_detai = JSON.parse(this.productData)
         if (localStorage.getItem("single-product") == undefined) {      
             this.product_detail = JSON.stringify(localStorage.setItem("single-product", this.productData))
         } 

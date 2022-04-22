@@ -68,23 +68,6 @@ const actions = {
 
         commit("CAT_PRODUCT", result.data.product_data);
     },
-    //Single Product View
-    // async loadDetailProducts({ commit }, payload_proid) {
-    //     let user = localStorage.getItem('user-info'); //user-info is local storage variable
-    //     const token = JSON.parse(user).success.token // to get tokem from response
-    //     // console.log(token);
-    //     const headers = {
-    //         "Content-type": "application/json; charset=UTF-8",
-    //         "Authorization": 'Bearer ' + token
-    //     }; //pass token
-    //     const result = await axios.get(process.env.VUE_APP_BASE_URL + "productDetails/" + payload_proid, {
-    //         headers
-    //     }); //get list of product category wise
-    //     // console.log("result",result.data)
-    //     commit("SINGLE_PRODUCT", result.data)
-    //     // this.product_detail = result.data
-    //     // console.log("product", this.product_detail)
-    // },
     //add product to cart table
     async addtoCart({ commit }, cartData) {
         let user = localStorage.getItem("user-info");
@@ -99,6 +82,7 @@ const actions = {
             {
                 customer_id: cartData["customer_id"],
                 product_id: cartData["product_id"],
+                product_price: cartData["product_price"]
             },
             {
                 headers,
@@ -126,6 +110,7 @@ const actions = {
                 headers,
             }
         );
+
 
         commit("GET_CART", result.data);
     },
@@ -174,7 +159,7 @@ const mutations = {
     },
     REMOVE_ITEM_FROM_CART(state, removecart_data) {
         state.removecart_data = removecart_data;
-    },
+    },  
 };
 
 export default {
