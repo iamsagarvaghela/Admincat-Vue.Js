@@ -1,7 +1,7 @@
 <template>
 <Header />
 <section class="h-100">
-    <!-- <pre>{{getcartData}}</pre> -->
+    <pre>{{getcartData}}</pre>
     <div class="h-100 py-5">
         <div class="row d-flex justify-content-center h-100">
             <div class="col-7">
@@ -86,7 +86,7 @@
                             <tr>
                                 <td>Total Items:</td>
                                 <td>
-                                    <b>{{ getcartData.status == 'info' ? null: getcartData.data.reduce((acc, nxt)=> acc + nxt.tot_quantity,0) }}</b>
+                                    <b>{{ getcartData.status == 'info'?null:  getcartData.data.reduce((acc, nxt)=>acc+nxt.tot_quantity,0) }}</b>
                                 </td>
                             </tr>
                             <tr>
@@ -106,7 +106,7 @@
                             <tr>
                                 <td>Total Amount:</td>
                                 <td>
-                                    <b><i class="fa fa-inr"></i>&nbsp;{{getcartData.status == 'info' ? null:  getcartData.data.reduce((acc, nxt)=>(parseFloat(acc)+parseFloat(nxt.tot_price)).toFixed(2),0) }}</b>
+                                    <b><i class="fa fa-inr"></i>&nbsp;{{getcartData.status == 'info'?null:  getcartData.data.reduce((acc, nxt)=>(parseFloat(acc)+parseFloat(nxt.tot_price)).toFixed(2),0) }}</b>
                                 </td>
                             </tr>
                         </table>
@@ -137,7 +137,7 @@ export default {
     computed: {
         getcartData: () => {
             return store.state.todaydeal.getcart_data
-        },
+        }
     },
     components: {
         Header,
@@ -171,10 +171,8 @@ export default {
                 if (cartData.id === id) {
                     if (cartData.tot_quantity > 1) {
                         cartData.tot_quantity -= 1;
-                        cartData.tot_price = (cartData.tot_quantity * cartData.price).toFixed(2);
-                        let updcartData = {"cart_id" : id, "tot_quantity" : cartData.tot_quantity, "tot_price" : cartData.tot_price}
-                        this.$store.dispatch("updatecartData", updcartData);
-                        this.getcart();
+                        let updcartData = {"cart_id" : id, "tot_quantiry" : cartData.tot_quantity}
+                        this.$store.dispatch("updatecartData", updcartData)
                     }
                 }
             })
@@ -184,10 +182,8 @@ export default {
                 if (cartData.id === id) {
                     if (cartData.tot_quantity < cartData.stock) {
                         cartData.tot_quantity += 1;
-                        cartData.tot_price = (cartData.tot_quantity * cartData.price).toFixed(2);
-                        let updcartData = {"cart_id" : id, "tot_quantity" : cartData.tot_quantity, "tot_price" : cartData.tot_price}
+                         let updcartData = {"cart_id" : id, "tot_quantiry" : cartData.tot_quantity}
                         this.$store.dispatch("updatecartData", updcartData);
-                        this.getcart();
                     } 
                     else {
                         alert("We're Sorry! We have only " + cartData.tot_quantity + " items available of " + cartData.name + ".")

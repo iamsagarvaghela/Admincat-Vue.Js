@@ -3,8 +3,6 @@
     <img src="../../assets/loader.svg" />
 </div>
 <div class="container">
-    <!-- <p>{{$store.state.firstName}}</p> -->
-    <!-- <p>{{$store.getters.fullname}}</p> -->
     <h4 class="text-center">
         🎁 Best Deals of the Day 🎁 <blink><img src="../../assets/discount.png" class="discount"> </blink>
     </h4>
@@ -15,7 +13,6 @@
                     <img :src="`${VUE_APP_IMAGE_URL}`+item.image" class="card-img-top p-4" alt="">
                     <div class="card-body">
                         <p class="card-title">{{item.name}}</p>
-                        <!-- <p class="card-text">{{item.description}}</p> -->
                         <div style="float:left">
                             <p><i class="fa fa-inr"></i> {{item.price}}</p>
                         </div>

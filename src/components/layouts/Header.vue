@@ -9,14 +9,6 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
-            <!-- <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                <li class="nav-item">
-                    <a class="nav-link position-relative" href="#"><i class="fa fa-heart fa-lg"></i>
-                        <b>&nbsp; Wishlist</b>
-                    </a>
-                </li>
-            </ul> -->
-            <!-- {{ this.searchValue }} -->
             <div class="container-fluid custom-width text-center">
                 <form class="example">
                     <input class="searchInput" type="text" placeholder="Search..." v-model="this.searchValue" @keyup="searchData()" id="srch">
@@ -31,7 +23,10 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                             <li>
-                                <router-link class="dropdown-item" :to="`/profile/`+userdata.id"><i class="fa fa-user-o"></i> View Profile</router-link>
+                                <router-link class="dropdown-item" :to="`/profile/`+userdata.id"><i class="fa fa-user-o"></i> Profile</router-link>
+                            </li>
+                             <li>
+                                <router-link class="dropdown-item" :to="`/myorder`"><i class="fa fa-cart-arrow-down"></i> My Orders</router-link>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -96,9 +91,7 @@ export default {
                 name: 'Login'
             }) //route redirection if no signup user
         } else {
-            // this.username = JSON.parse(user).success.name
             this.userdata = JSON.parse(user).success
-            // console.log("MYDATA",this.userdata)
         }
     }
 }

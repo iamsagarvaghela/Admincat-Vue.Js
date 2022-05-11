@@ -19,7 +19,6 @@
             <!-- {{ this.categoryProducts }} -->
             <div class="row row-cols-1 row-cols-md-5 g-4 pt-2">
                 <div class="col" v-for="item in categoryProducts.products" :key="item.id">
-                    <!-- <router-link :to="`/productdetails/`+ item.id" class="product"> -->
                     <router-link :to="{name:'ProductDetails', params:{productData: JSON.stringify(item)}}" class="product">
                         <div class="card">
                             <img :src="`${VUE_APP_IMAGE_URL}`+item.image" class="card-img-top p-4" alt="">
@@ -30,7 +29,7 @@
                                     <p><i class="fa fa-inr"></i> {{ item.price }}</p>
                                 </div>
                                 <div style="float:right">
-                                    <!-- <p style="text-decoration:line-through;"><i class="fa fa-inr"></i> {{ item.price * 2 }} </p> -->
+                                    <p style="text-decoration:line-through;"><i class="fa fa-inr"></i> {{ item.price * 2 }} </p>
                                 </div>
                             </div>
                         </div>

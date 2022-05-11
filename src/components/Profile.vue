@@ -129,7 +129,7 @@ export default {
                     // image: this.customer_detail.customer[0].image
                 }
             ); //get data of customer
-            // console.log("result", result)
+            localStorage.setItem("delivery-address",JSON.stringify(this.customer_detail.customer[0].address));
 
             if (result) {
                 alert("Profile updated successfully");

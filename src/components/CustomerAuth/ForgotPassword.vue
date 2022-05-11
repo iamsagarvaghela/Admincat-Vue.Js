@@ -55,10 +55,8 @@ export default {
                 } catch {
                     alert("❌ Invalid Credentials");
                 }
-                // console.log(result) //check data get or not
-                // if (result.status == 200  && result.data.length > 0) {
+               
                 if (result.status == 200) {
-                    // localStorage.setItem("user-info", JSON.stringify(result.data[0]));
                     alert("Reset Link Shared Successfully");
                     this.$router.push({
                         name: "Login",

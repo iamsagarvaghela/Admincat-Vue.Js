@@ -2,14 +2,10 @@
 <Header />
 <div class="container border mt-4 bg-white">
     <div class="row col-md-12 py-3">
-        <!-- <pre>{{singleProduct}}</pre> -->
-        <!-- <pre>{{product_detail.id}}</pre> -->
-
         <div class="col-md-5">
             <img :src="`${VUE_APP_IMAGE_URL}`+product_detail.image" class="card-img-top p-5" alt="">
         </div>
         <div class="col-md-7 pt-3">
-            <!-- <h6 class="desc">{{ product_detail.name }} ({{ product_detail.name }})</h6> -->
             <h3>{{ product_detail.name }}</h3>
             <h5><i class="fa fa-inr"></i> {{ product_detail.price }}</h5>
 

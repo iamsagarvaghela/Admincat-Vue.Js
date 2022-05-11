@@ -3,12 +3,6 @@
     <img src="../../assets/loader.svg" />
 </div>
 <div class="container">
-    <!-- <p>{{$store.state.firstName}}</p> -->
-    <!-- <pre>{{$store.state.searchData}}</pre> -->
-    <!-- <p>{{$store.getters.fullname}}</p> -->
-    <!-- <pre>{{this.todaydealProducts}}</pre> -->
-
-
     <h4 class="text-center">
         🎁 Best Deals of the Day 🎁
         <img src="../../assets/discount.png" class="discount blk">
@@ -39,7 +33,7 @@
 
 <script>
 // import axios from 'axios'
-import { mapGetters} from "vuex"
+import { mapGetters } from "vuex"
 // import { mapGetters, mapActions } from "vuex"; 
 export default {
     name: 'TodayDeal',
@@ -48,25 +42,18 @@ export default {
         return {
             VUE_APP_IMAGE_URL: process.env.VUE_APP_IMAGE_URL,
             loader: false,
-            // todaydealProducts:[]
         }
     },
     methods: {
         // ...mapActions(["getProducts"])    
         async getProd(){
             this.loader = true
-            // this.$store.state.searchproduct.productData = ''
             await this.$store.dispatch("getProducts");
-            // this.$store.getters.todaydealProducts
-            // this.todaydealProducts = JSON.parse(localStorage.getItem('search-product'));
             this.loader = false
         }  
     },
     created(){
-        // this.getProducts();
-        // alert(this.searchProductData)
         this.getProd();
-        // this.$store.dispatch("getProducts");
     }
 }
 </script>

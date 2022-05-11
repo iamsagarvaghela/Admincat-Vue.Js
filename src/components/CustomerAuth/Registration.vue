@@ -61,18 +61,13 @@ export default {
                 }
             }
             if (!error) {
-                // console.log(this.name, this.email,  this.password);
                 let result = await axios.post("http://localhost:8000/api/customer/store", {
                     name: this.form.name,
                     email: this.form.email,
                     phone: this.form.phone,
                     password: this.form.password
                 });
-                // axios.post('http://localhost:8000/api/customer/store', this.form)
-                //     .then(response => console.log(response))
-                //     .catch(error => console.log(error))
-
-                // console.log(result);
+        
                 if (result.status == 201) {
                     alert("Signup Success");
                 }

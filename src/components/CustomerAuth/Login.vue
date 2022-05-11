@@ -51,23 +51,16 @@ export default {
                 if (this.form[item] === "" || this.form[item].length === 0) {
                     var error = this.error.push(item)
                 }
-            }
-            // alert("Login function called")
-            // console.log(this.email,this.password)
-            // http://localhost:3000/users?email=sagar@gmail.com&password=sagar@123
+            }          
             if (!error) {
                 let result = await axios.post(
-                    // `http://localhost:8000/api/customer/checkLogin?email=${this.form.email}&password=${this.form.password}` // [Networ URL data available NOT SECURE]
                     `http://localhost:8000/api/customer/checkLogin`, {
                             email: this.form.email,     //To prevent pass data in URL pass data as an object [Network URL data not available]
                             password: this.form.password
                         }
                     );
-                // console.log(result) //check data get or not
-                // if (result.status == 200  && result.data.length > 0) {
                 if (result) {
                     localStorage.setItem("user-info", JSON.stringify(result.data));
-                    // alert("Success")
                     this.$router.push({
                         name: 'Home'
                     });
